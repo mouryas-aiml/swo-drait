@@ -4,6 +4,7 @@
  */
 import React from 'react';
 import { FaInstagram, FaLinkedin, FaTelegram } from 'react-icons/fa';
+import './Footer.css';
 
 /**
  * Team members who built the site
@@ -24,18 +25,20 @@ const SOCIAL_LINKS = [
 
 const Footer = () => {
   return (
-    <footer className="footer relative z-10 w-full bg-[#0a0a0f] border-t border-white/10 pt-12 pb-6">
-      <div className="footer-content max-w-5xl mx-auto px-6 flex flex-col items-center text-center">
+    <footer className="footer">
+      <div className="footer-content">
+        {/* Logo Section (placeholder) */}
+        <div className="footer-logo-section"></div>
 
         {/* Social Icons */}
-        <div className="footer-social flex items-center justify-center gap-6 mb-8">
+        <div className="footer-social">
           {SOCIAL_LINKS.map((social, index) => (
             <a
               key={index}
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="social-icon text-gray-400 hover:text-green-500 hover:scale-110 transition-all text-2xl"
+              className="social-icon"
               aria-label={social.label}
             >
               <social.icon />
@@ -44,14 +47,14 @@ const Footer = () => {
         </div>
 
         {/* Footer Text */}
-        <div className="footer-text text-sm text-gray-500 space-y-4">
-          <div className="leading-relaxed">
-            Copyright 2026 | Built with <span className="text-red-500">❤️</span> by{' '}
+        <div className="footer-text">
+          <span>
+            Copyright 2026 | Built with ❤️ by{' '}
             <a
               href="https://www.linkedin.com/company/gfg-campus-body-dr-ait/"
               target="_blank"
               rel="noopener noreferrer"
-              className="club-link text-gray-300 hover:text-green-400 transition-colors inline-block font-medium"
+              className="club-link"
             >
               GeeksforGeeks Campus Body - Dr.AIT Club
             </a>
@@ -62,23 +65,23 @@ const Footer = () => {
                   href={member.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="team-link text-gray-300 hover:text-green-400 transition-colors"
+                  className="team-link"
                   title={`Connect with ${member.name} on LinkedIn`}
                 >
                   <strong>{member.name}</strong>
                 </a>
-                {index < TEAM_MEMBERS.length - 1 && <span className="mx-1">, </span>}
+                {index < TEAM_MEMBERS.length - 1 && ', '}
               </span>
             ))}
-          </div>
+          </span>
 
           {/* Bottom Links */}
-          <div className="footer-bottom-links flex items-center justify-center gap-4 text-xs text-gray-600 mt-6 pt-6 border-t border-white/5">
-            <a href="#privacy" className="hover:text-gray-300 transition-colors">Privacy Policy</a>
+          <div className="footer-bottom-links">
+            <a href="#privacy">Privacy Policy</a>
             <span className="separator">•</span>
-            <a href="#terms" className="hover:text-gray-300 transition-colors">Terms of Service</a>
+            <a href="#terms">Terms of Service</a>
             <span className="separator">•</span>
-            <a href="#cookies" className="hover:text-gray-300 transition-colors">Cookie Policy</a>
+            <a href="#cookies">Cookie Policy</a>
           </div>
         </div>
       </div>

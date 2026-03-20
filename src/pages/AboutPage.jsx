@@ -11,7 +11,8 @@ const AboutPage = () => (
       </motion.div>
 
       {/* About College */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="card p-8 mb-6">
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }} className="glass-panel p-8 mb-6 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-kalarava-500 to-sanskrithi-500" />
         <h2 className="text-white font-display font-bold text-2xl mb-4">🎓 About DRAIT</h2>
         <p className="text-gray-400 leading-relaxed mb-4">
           Dr. Ambedkar Institute of Technology (Dr.AIT), Bangaluru, is a premier engineering college affiliated to Visvesvaraya Technological University (VTU).
@@ -25,7 +26,7 @@ const AboutPage = () => (
 
       {/* Fests */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="card p-6 border-l-4 border-l-kalarava-500">
+        <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="glass-panel p-6 border-l-4 border-l-kalarava-500 hover:shadow-2xl hover:shadow-kalarava-500/20">
           <div className="text-4xl mb-3">🪔</div>
           <h3 className="text-white font-display font-bold text-xl mb-2 gradient-text-kalarava">Kannada Kalarava</h3>
           <p className="text-kalarava-400 text-sm font-kannada mb-3">ಕನ್ನಡ ಕಲೆಯ ಮಹೋತ್ಸವ</p>
@@ -34,7 +35,7 @@ const AboutPage = () => (
             Yakshagana to Haadu Gaana — Kannada Kalarava is a tribute to the soul of Kannada art and tradition.
           </p>
         </motion.div>
-        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="card p-6 border-l-4 border-l-sanskrithi-500">
+        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="glass-panel p-6 border-l-4 border-l-sanskrithi-500 hover:shadow-2xl hover:shadow-sanskrithi-500/20">
           <div className="text-4xl mb-3">🎭</div>
           <h3 className="text-white font-display font-bold text-xl mb-2 gradient-text-sanskrithi">Sanskrithi</h3>
           <p className="text-sanskrithi-400 text-sm mb-3">Where Tradition Meets Creativity</p>
@@ -46,7 +47,7 @@ const AboutPage = () => (
       </div>
 
       {/* Team */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="card p-8 mb-6">
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="glass-panel p-8 mb-6">
         <h2 className="text-white font-display font-bold text-2xl mb-6">👥 SWO Team 2025–26</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {[
@@ -57,7 +58,7 @@ const AboutPage = () => (
             { name: 'Sneha Rao', role: 'Events Coordinator', dept: 'ME – 3rd Year' },
             { name: 'Kiran Reddy', role: 'Tech & Media', dept: 'CSE – 3rd Year' },
           ].map((m, i) => (
-            <div key={i} className="glass rounded-xl p-4">
+            <div key={i} className="glass rounded-xl p-4 hover:-translate-y-2 hover:shadow-xl hover:shadow-white/10 transition-all duration-300">
               <div className="w-10 h-10 bg-gradient-to-br from-kalarava-500 to-sanskrithi-600 rounded-full flex items-center justify-center text-white font-bold mb-3">
                 {m.name.charAt(0)}
               </div>
@@ -77,7 +78,7 @@ const AboutPage = () => (
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
           {/* Left: Map */}
-          <div className="rounded-2xl overflow-hidden glass border border-white/5 min-h-[400px]">
+          <div className="rounded-2xl overflow-hidden glass-panel min-h-[400px]">
             <iframe
               title="Dr. AIT Location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0827170196887!2d77.50508541531778!3d12.966547618501173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3c32fd2b0ddf%3A0xe5a363d6b0409a63!2sDr.%20Ambedkar%20Institute%20Of%20Technology!5e0!3m2!1sen!2sin!4v1711204052069!5m2!1sen!2sin"
@@ -93,8 +94,8 @@ const AboutPage = () => (
           {/* Right: Info Cards */}
           <div className="flex flex-col gap-6">
             {/* Address Card */}
-            <div className="bg-[#1c1d24] rounded-2xl p-8 border border-white/5 flex flex-col items-start gap-5 flex-1 shadow-lg">
-              <div className="w-12 h-12 bg-[#22c55e] rounded-xl flex items-center justify-center text-white text-2xl shadow-lg shadow-green-500/20 shrink-0">
+            <div className="glass-panel p-8 flex flex-col items-start gap-5 flex-1 group hover:-translate-y-2 hover:border-green-500/30">
+              <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center text-green-400 text-2xl shadow-lg border border-green-500/30 group-hover:scale-110 group-hover:bg-green-500 group-hover:text-white transition-all duration-300 shrink-0">
                 <HiLocationMarker />
               </div>
               <div className="space-y-2">
@@ -109,8 +110,8 @@ const AboutPage = () => (
             </div>
 
             {/* Email Card */}
-            <div className="bg-[#1c1d24] rounded-2xl p-8 border border-white/5 flex flex-col items-start gap-5 flex-1 shadow-lg">
-              <div className="w-12 h-12 bg-[#22c55e] rounded-xl flex items-center justify-center text-white text-2xl shadow-lg shadow-green-500/20 shrink-0">
+            <div className="glass-panel p-8 flex flex-col items-start gap-5 flex-1 group hover:-translate-y-2 hover:border-green-500/30">
+              <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center text-green-400 text-2xl shadow-lg border border-green-500/30 group-hover:scale-110 group-hover:bg-green-500 group-hover:text-white transition-all duration-300 shrink-0">
                 <HiMail />
               </div>
               <div className="space-y-2">

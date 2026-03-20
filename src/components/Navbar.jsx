@@ -6,14 +6,16 @@ import {
   HiMenu, HiX,
 } from 'react-icons/hi';
 import toast from 'react-hot-toast';
+import './Navbar.css';
 
 /* ── nav links ─────────────────────────────────────────────── */
 const navLinks = [
   { to: '/',         label: 'Home'     },
+  { to: '/about',    label: 'About'    },
   { to: '/events',   label: 'Events'   },
   { to: '/schedule', label: 'Schedule' },
   { to: '/gallery',  label: 'Gallery'  },
-  { to: '/about',    label: 'About'    },
+  { to: '/#contact',  label: 'Contact Us' },
 ];
 
 /* ── tiny inline countdown (Xd Xh Xm Xs format) ───────────── */
@@ -146,13 +148,47 @@ const Navbar = () => {
           </div>
 
           {/* RIGHT – action buttons + hamburger */}
-          {/* RIGHT – hamburger only */}
-          <div className="navbar-right">
+          <div className="navbar-right flex items-center gap-4">
+            <div className="hidden xl:flex items-center gap-3">
+              {isAuthenticated ? (
+                <>
+                  <Link to={getDashboardPath()} style={{ backgroundColor: 'transparent', border: '2px solid #22c55e', color: '#22c55e', padding: '8px 20px', borderRadius: '8px', fontWeight: '700', fontSize: '15px', textDecoration: 'none', display: 'inline-block' }}>Dashboard</Link>
+                  <button onClick={handleLogout} style={{ backgroundColor: 'transparent', border: '2px solid #ef4444', color: '#ef4444', padding: '8px 20px', borderRadius: '8px', fontWeight: '700', fontSize: '15px', textDecoration: 'none', display: 'inline-block', cursor: 'pointer' }}>Logout</button>
+                </>
+              ) : (
+                <>
+                  <Link to="/login" style={{ backgroundColor: 'transparent', border: '2px solid #22c55e', color: '#22c55e', padding: '8px 20px', borderRadius: '8px', fontWeight: '700', fontSize: '15px', textDecoration: 'none', display: 'inline-block' }}>Login</Link>
+                  <Link to="/register" style={{ backgroundColor: '#22c55e', border: '2px solid #22c55e', color: '#ffffff', padding: '8px 20px', borderRadius: '8px', fontWeight: '700', fontSize: '15px', textDecoration: 'none', display: 'inline-block' }}>Register</Link>
+                </>
+              )}
+            </div>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="navbar-hamburger text-white bg-white/5 hover:bg-white/10 p-2 rounded-lg transition-colors border border-white/10"
+              style={{
+                backgroundColor: '#181b25',
+                border: '1px solid #374151',
+                borderRadius: '8px',
+                padding: '12px 10px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '5px',
+                cursor: 'pointer',
+                marginLeft: '12px',
+                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)'
+              }}
             >
-              {isOpen ? <HiX className="w-6 h-6" /> : <HiMenu className="w-6 h-6" />}
+              {isOpen ? (
+                <div style={{ width: '28px', height: '22px', position: 'relative' }}>
+                  <div style={{ position: 'absolute', top: '9px', left: '0', width: '28px', height: '4px', backgroundColor: '#e5e7eb', borderRadius: '4px', transform: 'rotate(45deg)', transition: 'transform 0.2s' }} />
+                  <div style={{ position: 'absolute', top: '9px', left: '0', width: '28px', height: '4px', backgroundColor: '#e5e7eb', borderRadius: '4px', transform: 'rotate(-45deg)', transition: 'transform 0.2s' }} />
+                </div>
+              ) : (
+                <>
+                  <div style={{ width: '28px', height: '4px', backgroundColor: '#cbd5e1', borderRadius: '4px' }} />
+                  <div style={{ width: '28px', height: '4px', backgroundColor: '#cbd5e1', borderRadius: '4px' }} />
+                  <div style={{ width: '28px', height: '4px', backgroundColor: '#cbd5e1', borderRadius: '4px' }} />
+                </>
+              )}
             </button>
           </div>
         </div>
@@ -170,34 +206,16 @@ const Navbar = () => {
             exit={{ height: 0, opacity: 0 }}
             className="navbar-mobile-menu absolute top-[88px] left-0 right-0 bg-[#07090f] border-b border-white/5 shadow-2xl z-50 overflow-hidden"
           >
-            <div className="max-w-4xl mx-auto px-4 py-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-              {navLinks.map(({ to, label }) => (
-                <Link
-                  key={to}
-                  to={to}
-                  className={`text-sm font-medium transition-colors
-                    ${location.pathname === to
-                      ? 'text-white'
-                      : 'text-gray-400 hover:text-white'}`}
-                >
-                  {label}
-                </Link>
-              ))}
-              {isAuthenticated ? (
-                <>
-                  <Link to={getDashboardPath()} className="text-gray-400 hover:text-white text-sm font-medium transition-colors">
-                    Dashboard
+            <div className="max-w-5xl mx-auto px-4 py-8 flex flex-col items-center justify-center gap-8">
+              {/* The Advanced CSS Menu inside Dropdown (now visible on all screens) */}
+              <nav className="desktop-adv-nav w-full grid">
+                {navLinks.map((link, i) => (
+                  <Link key={i} to={link.to} id={`nav-item-${i}`} onClick={() => setIsOpen(false)}>
+                    {link.label}
                   </Link>
-                  <button onClick={handleLogout} className="text-gray-400 hover:text-white text-sm font-medium transition-colors">
-                    Logout
-                  </button>
-                </>
-              ) : (
-                <>
-                  <Link to="/login" className="text-gray-400 hover:text-white text-sm font-medium transition-colors">Login</Link>
-                  <Link to="/register" className="text-gray-400 hover:text-white text-sm font-medium transition-colors">Register</Link>
-                </>
-              )}
+                ))}
+              </nav>
+
             </div>
           </motion.div>
         )}

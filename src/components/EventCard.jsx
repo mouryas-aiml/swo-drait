@@ -45,7 +45,7 @@ const EventCard = ({ event, index = 0 }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="card group cursor-pointer"
+      className="glass-panel group cursor-pointer"
     >
       {/* Image */}
       <div className="relative h-48 overflow-hidden">

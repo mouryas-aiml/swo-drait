@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import CountdownTimer from '../components/CountdownTimer';
 import EventCard from '../components/EventCard';
 import { eventService } from '../services/services';
-import { HiArrowRight, HiSparkles } from 'react-icons/hi';
+import { HiArrowRight, HiSparkles, HiLocationMarker, HiMail } from 'react-icons/hi';
+import { FaMapMarkerAlt, FaEnvelope } from 'react-icons/fa';
 
 /* ─────────────────────────── Floating particles canvas ─── */
 const ParticleCanvas = () => {
@@ -117,6 +118,18 @@ const categories = [
 const HomePage = () => {
   const [featuredEvents, setFeaturedEvents] = useState([]);
   const [eventsLoading, setEventsLoading] = useState(true);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === '#contact') {
+      const el = document.getElementById('contact');
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100);
+      }
+    } else if (!location.hash) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location]);
 
   const KALARAVA_DATE = '2026-04-15T00:00:00';
   const SANSKRITHI_DATE = '2026-04-22T00:00:00';
@@ -384,6 +397,63 @@ const HomePage = () => {
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ══════════════ CONTACT US ══════════════ */}
+      <section id="contact" className="contact section">
+        <div className="section-background">
+          <div className="grid-overlay"></div>
+        </div>
+
+        <div className="container mx-auto px-4 max-w-7xl relative z-10 py-16">
+          <div className="section-header text-center mb-12">
+            <h2 className="section-title text-4xl font-bold text-white uppercase tracking-wide">
+              Contact <span className="green text-[#22c55e]">Us</span>
+            </h2>
+          </div>
+
+          <div className="contact-grid">
+            {/* Map */}
+            <div className="contact-map">
+              <iframe
+                title="Location Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.1278150063117!2d77.50345577593006!3d12.963672087350956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3e9c40000001%3A0x2d368cebf691c5fb!2sDr.%20Ambedkar%20Institute%20Of%20Technology!5e0!3m2!1sen!2sin!4v1761238580451!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0, borderRadius: '12px' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+
+            {/* Contact Info */}
+            <div className="contact-info">
+              <div className="contact-card">
+                <div className="contact-icon">
+                  <FaMapMarkerAlt />
+                </div>
+                <h3 className="text-white">Our Address</h3>
+                <p>
+                  Dr. Ambedkar Institute of Technology,<br />
+                  Outer Ring Rd, near Gnana Bharathi,<br />
+                  Naagarabhaavi, Bengaluru,<br />
+                  Karnataka 560056
+                </p>
+              </div>
+
+              <div className="contact-card">
+                <div className="contact-icon">
+                  <FaEnvelope />
+                </div>
+                <h3 className="text-white">Email Us</h3>
+                <p>
+                  <a href="mailto:astrava@drait.edu.in">astrava@drait.edu.in</a>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

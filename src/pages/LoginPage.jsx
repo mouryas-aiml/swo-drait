@@ -31,9 +31,9 @@ const LoginPage = () => {
   return (
     <div className="min-h-screen bg-surface flex items-center justify-center px-4">
       {/* Background */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-kalarava-500/10 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-sanskrithi-600/10 rounded-full blur-3xl" />
+      <div className="fixed inset-0 -z-10 pointer-events-none">
+        <div className="absolute top-10 -left-40 w-[500px] h-[500px] bg-kalarava-500/15 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute bottom-10 -right-40 w-[500px] h-[500px] bg-sanskrithi-600/15 rounded-full blur-[100px] animate-pulse" style={{ animationDuration: '10s' }} />
       </div>
 
       <motion.div initial={{ opacity:0, y:30 }} animate={{ opacity:1, y:0 }} className="w-full max-w-md">
@@ -48,8 +48,9 @@ const LoginPage = () => {
           </div>
         </Link>
 
-        <div className="card p-8">
-          <h1 className="font-display font-bold text-2xl text-white mb-1">Welcome back 👋</h1>
+        <div className="glass-panel p-10 border-t border-white/20 shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-white/10 to-transparent blur-2xl pointer-events-none" />
+          <h1 className="font-display font-bold text-3xl text-white mb-2 tracking-tight">Welcome back 👋</h1>
           <p className="text-gray-400 text-sm mb-6">Sign in to your account</p>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -85,8 +86,8 @@ const LoginPage = () => {
           </form>
 
           {/* Demo accounts */}
-          <div className="mt-5 p-4 bg-surface-muted rounded-xl border border-surface-border">
-            <p className="text-gray-500 text-xs mb-2 font-semibold uppercase tracking-wider">Demo Accounts</p>
+          <div className="mt-6 p-5 bg-white/[0.03] rounded-xl border border-white/10 backdrop-blur-sm">
+            <p className="text-gray-400 text-xs mb-3 font-semibold uppercase tracking-wider">Demo Accounts</p>
             {[['admin@drait.edu','Admin'],['swo@drait.edu','Organizer'],['student@drait.edu','Student']].map(([em, role]) => (
               <button key={role} onClick={() => { document.querySelector('input[type=email]').value=em; }}
                 className="block text-xs text-kalarava-400 hover:text-kalarava-300 transition-colors mb-0.5 text-left">
