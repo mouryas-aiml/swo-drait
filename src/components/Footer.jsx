@@ -11,7 +11,7 @@ import './Footer.css';
  */
 const TEAM_MEMBERS = [
   { name: 'Mourya S Gowda', linkedin: 'https://www.linkedin.com/in/mourya-s' },
-  { name: 'BhanuPrakash B M', linkedin: 'https://www.linkedin.com/in/bhanuprakash28/' }
+  { name: 'Bhanu Prakash B M', linkedin: 'https://www.linkedin.com/in/bhanuprakash28/' }
 ];
 
 /**
